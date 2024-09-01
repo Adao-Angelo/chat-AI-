@@ -14,19 +14,20 @@ import { Input } from "@/components/ui/input";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { useChat } from "ai/react";
 import { ScrollArea } from "./ui/scroll-area";
+import MessageFormatter from "./MessageFormatter";
 
 export interface ChatProps {}
 
 export function Chat(props: ChatProps) {
   const { messages, input, handleInputChange, handleSubmit } = useChat();
   return (
-    <Card className="w-[440px]">
+    <Card className="w-[1000px]">
       <CardHeader>
         <CardTitle>Chat IA</CardTitle>
         <CardDescription>Converse with AI-powered assistants.</CardDescription>
       </CardHeader>
       <CardContent className="space-y-4">
-        <ScrollArea className="h-[400px] w-full pr-4">
+        <ScrollArea className="h-[450px] w-full pr-4">
           {messages.map((message) => {
             return (
               <div
@@ -47,9 +48,14 @@ export function Chat(props: ChatProps) {
                 )}
                 <p className="leading-relaxed">
                   <span className="block font-bold text-slate-700">
-                    {message.role === "user" ? "Usuário" : "AI"}
+                    {message.role === "user" ? "Usuário" : "AG"}
                   </span>
-                  {message.content}
+
+                  {message.role === "user" ? (
+                    message.content
+                  ) : (
+                    <MessageFormatter text={message.content} />
+                  )}
                 </p>
               </div>
             );
