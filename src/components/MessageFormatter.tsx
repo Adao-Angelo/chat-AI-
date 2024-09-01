@@ -33,7 +33,7 @@ export default function MessageFormatter({ text }: MessageFormatterProps) {
           const code = part.trim();
 
           return (
-            <ScrollArea className="w-[650px]">
+            <ScrollArea className="w-[650px]" key={`scroll-area-${index}`}>
               <div
                 key={index}
                 style={{
@@ -86,10 +86,16 @@ export default function MessageFormatter({ text }: MessageFormatterProps) {
             const lineParts = line.split(boldRegex);
 
             return (
-              <p key={lineIndex}>
+              <p key={`line-${index}-${lineIndex}`}>
                 {lineParts.map((linePart, linePartIndex) => {
                   if (linePartIndex % 2 === 1) {
-                    return <strong key={linePartIndex}>{linePart}</strong>;
+                    return (
+                      <strong
+                        key={`linePart-${index}-${lineIndex}-${linePartIndex}`}
+                      >
+                        {linePart}
+                      </strong>
+                    );
                   } else {
                     return linePart;
                   }
@@ -98,7 +104,7 @@ export default function MessageFormatter({ text }: MessageFormatterProps) {
             );
           });
 
-          return <div key={index}>{formattedText}</div>;
+          return <div key={`text-${index}`}>{formattedText}</div>;
         }
       })}
     </div>
