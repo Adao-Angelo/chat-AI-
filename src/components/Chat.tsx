@@ -35,13 +35,13 @@ export function Chat(props: ChatProps) {
               >
                 {message.role === "user" && (
                   <Avatar>
-                    <AvatarFallback>AJ</AvatarFallback>
+                    <AvatarFallback>US</AvatarFallback>
                     <AvatarImage src="https://github.com/Adao-Angelo.png"></AvatarImage>
                   </Avatar>
                 )}
                 {message.role === "assistant" && (
                   <Avatar>
-                    <AvatarFallback>AJ</AvatarFallback>
+                    <AvatarFallback>AG</AvatarFallback>
                     <AvatarImage src="https://github.com/Antonio-Gabriel.png"></AvatarImage>
                   </Avatar>
                 )}
