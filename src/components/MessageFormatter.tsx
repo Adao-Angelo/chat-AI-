@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState } from "react";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { materialDark } from "react-syntax-highlighter/dist/esm/styles/prism";
@@ -70,9 +72,9 @@ export default function MessageFormatter({ text }: MessageFormatterProps) {
 
                 <SyntaxHighlighter
                   language={language}
-                  style={materialDark} // Tema material-dark
+                  style={materialDark}
                   showLineNumbers
-                  customStyle={{ margin: 0 }} // Remove margens internas
+                  customStyle={{ margin: 0 }}
                 >
                   {code}
                 </SyntaxHighlighter>
