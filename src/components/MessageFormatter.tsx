@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { materialDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 import { Clipboard, Check } from "lucide-react";
+import { ScrollArea, ScrollBar } from "./ui/scroll-area";
 
 interface MessageFormatterProps {
   text: string;
@@ -32,48 +33,53 @@ export default function MessageFormatter({ text }: MessageFormatterProps) {
           const code = part.trim();
 
           return (
-            <div
-              key={index}
-              style={{
-                position: "relative",
-                width: "100%",
-                backgroundColor: "#2e2e2e",
-                padding: "20px",
-                borderRadius: "8px",
-                margin: "10px 0",
-                border: "1px solid #333",
-                overflowX: "auto",
-                whiteSpace: "pre",
-              }}
-            >
-              <button
-                onClick={() => handleCopy(code, index)}
+            <ScrollArea className="w-[650px]">
+              <div
+                key={index}
                 style={{
-                  position: "absolute",
-                  top: "10px",
-                  right: "10px",
-                  background: "none",
-                  border: "none",
-                  cursor: "pointer",
-                  color: "#fff",
+                  position: "relative",
+                  width: "100%",
+                  backgroundColor: "#2e2e2e",
+                  padding: "20px",
+                  borderRadius: "8px",
+                  margin: "10px 0",
+                  border: "1px solid #333",
+                  overflowX: "auto",
+                  whiteSpace: "pre",
                 }}
-                title="Copiar código"
               >
-                {copiedIndex === index ? (
-                  <Check size={16} />
-                ) : (
-                  <Clipboard size={16} />
-                )}
-              </button>
-              <SyntaxHighlighter
-                language={language}
-                style={materialDark} // Tema material-dark
-                showLineNumbers
-                customStyle={{ margin: 0 }} // Remove margens internas
-              >
-                {code}
-              </SyntaxHighlighter>
-            </div>
+                <button
+                  onClick={() => handleCopy(code, index)}
+                  style={{
+                    position: "absolute",
+                    top: "10px",
+                    right: "10px",
+                    background: "none",
+                    border: "none",
+                    cursor: "pointer",
+                    color: "#fff",
+                  }}
+                  title="Copiar código"
+                >
+                  {copiedIndex === index ? (
+                    <Check size={16} />
+                  ) : (
+                    <Clipboard size={16} />
+                  )}
+                </button>
+
+                <SyntaxHighlighter
+                  language={language}
+                  style={materialDark} // Tema material-dark
+                  showLineNumbers
+                  customStyle={{ margin: 0 }} // Remove margens internas
+                >
+                  {code}
+                </SyntaxHighlighter>
+              </div>
+
+              <ScrollBar orientation="horizontal" />
+            </ScrollArea>
           );
         } else {
           const formattedText = part.split("\n").map((line, lineIndex) => {
