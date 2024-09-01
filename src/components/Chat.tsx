@@ -31,7 +31,7 @@ export function Chat(props: ChatProps) {
             return (
               <div
                 key={message.id}
-                className="flex gap-3 text-slate-600 text-sm md-4"
+                className="flex gap-3 text-slate-600 text-sm mb-4"
               >
                 {message.role === "user" && (
                   <Avatar>
