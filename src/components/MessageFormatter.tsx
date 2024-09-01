@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { materialDark } from "react-syntax-highlighter/dist/esm/styles/prism";
-import { Clipboard, Check } from "lucide-react"; // Ícones de copiar e de verificação
+import { Clipboard, Check } from "lucide-react";
 
 interface MessageFormatterProps {
   text: string;
@@ -10,11 +10,9 @@ interface MessageFormatterProps {
 export default function MessageFormatter({ text }: MessageFormatterProps) {
   const [copiedIndex, setCopiedIndex] = useState<number | null>(null);
 
-  // Regex para identificar blocos de código e negritos
   const codeBlockRegex = /```(.*?)\n([\s\S]*?)```/g;
   const boldRegex = /\*\*(.*?)\*\*/g;
 
-  // Quebra o texto em partes, incluindo código e texto comum
   const parts = text.split(codeBlockRegex);
 
   const handleCopy = (code: string, index: number) => {
@@ -23,7 +21,7 @@ export default function MessageFormatter({ text }: MessageFormatterProps) {
 
     setTimeout(() => {
       setCopiedIndex(null);
-    }, 2000); // Volta ao normal após 2 segundos
+    }, 2000);
   };
 
   return (
@@ -38,12 +36,14 @@ export default function MessageFormatter({ text }: MessageFormatterProps) {
               key={index}
               style={{
                 position: "relative",
-                overflowX: "auto",
-                backgroundColor: "#2e2e2e", // Cor de fundo escura para combinar com o tema mini
+                width: "100%",
+                backgroundColor: "#2e2e2e",
                 padding: "20px",
                 borderRadius: "8px",
                 margin: "10px 0",
-                border: "1px solid #333", // Borda para destacar o bloco de código
+                border: "1px solid #333",
+                overflowX: "auto",
+                whiteSpace: "pre",
               }}
             >
               <button
@@ -55,7 +55,7 @@ export default function MessageFormatter({ text }: MessageFormatterProps) {
                   background: "none",
                   border: "none",
                   cursor: "pointer",
-                  color: "#fff", // Cor branca para o ícone no modo dark
+                  color: "#fff",
                 }}
                 title="Copiar código"
               >
@@ -69,6 +69,7 @@ export default function MessageFormatter({ text }: MessageFormatterProps) {
                 language={language}
                 style={materialDark} // Tema material-dark
                 showLineNumbers
+                customStyle={{ margin: 0 }} // Remove margens internas
               >
                 {code}
               </SyntaxHighlighter>
