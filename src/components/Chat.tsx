@@ -21,7 +21,7 @@ export interface ChatProps {}
 export function Chat(props: ChatProps) {
   const { messages, input, handleInputChange, handleSubmit } = useChat();
   return (
-    <Card className="w-[1000px]">
+    <Card className="w-[800px]">
       <CardHeader>
         <CardTitle>Chat IA</CardTitle>
         <CardDescription>Converse with AI-powered assistants.</CardDescription>
