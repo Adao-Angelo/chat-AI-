@@ -15,6 +15,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { useChat } from "ai/react";
 import { ScrollArea } from "./ui/scroll-area";
 import MessageFormatter from "./MessageFormatter";
+import { ModeToggle } from "./Theme";
 
 export interface ChatProps {}
 
@@ -23,8 +24,17 @@ export function Chat(props: ChatProps) {
   return (
     <Card className="w-[800px]">
       <CardHeader>
-        <CardTitle>Chat IA</CardTitle>
-        <CardDescription>Converse with AI-powered assistants.</CardDescription>
+        <div className="flex justify-between">
+          <div>
+            <CardTitle>Chat IA</CardTitle>
+            <CardDescription>
+              Converse with AI-powered assistants.
+            </CardDescription>
+          </div>
+          <div>
+            <ModeToggle />
+          </div>
+        </div>
       </CardHeader>
       <CardContent className="space-y-4">
         <ScrollArea className="h-[450px] w-full pr-4">
