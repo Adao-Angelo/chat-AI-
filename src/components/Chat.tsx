@@ -16,6 +16,7 @@ import { useChat } from "ai/react";
 import { ScrollArea } from "./ui/scroll-area";
 import MessageFormatter from "./MessageFormatter";
 import { ModeToggle } from "./Theme";
+import { Skeleton } from "@/components/ui/skeleton";
 
 export interface ChatProps {}
 

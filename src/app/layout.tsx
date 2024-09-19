@@ -6,7 +6,7 @@ import { ThemeProvider } from "@/providers/ThemeProvider";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Chat IA",
+  title: "History IA",
   description: "This is the chat IA.",
 };
 
