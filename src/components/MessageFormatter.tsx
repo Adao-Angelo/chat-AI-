@@ -86,7 +86,10 @@ export default function MessageFormatter({ text }: MessageFormatterProps) {
             const lineParts = line.split(boldRegex);
 
             return (
-              <p key={`line-${index}-${lineIndex}`}>
+              <p
+                className="dark:text-slate-200"
+                key={`line-${index}-${lineIndex}`}
+              >
                 {lineParts.map((linePart, linePartIndex) => {
                   if (linePartIndex % 2 === 1) {
                     return (
@@ -104,7 +107,11 @@ export default function MessageFormatter({ text }: MessageFormatterProps) {
             );
           });
 
-          return <div key={`text-${index}`}>{formattedText}</div>;
+          return (
+            <div className="dark:text-slate-200" key={`text-${index}`}>
+              {formattedText}
+            </div>
+          );
         }
       })}
     </div>

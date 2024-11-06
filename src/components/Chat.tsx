@@ -23,7 +23,7 @@ export interface ChatProps {}
 export function Chat(props: ChatProps) {
   const { messages, input, handleInputChange, handleSubmit } = useChat();
   return (
-    <Card className="w-[800px]">
+    <Card className="w-[500px]">
       <CardHeader>
         <div className="flex justify-between">
           <div>
@@ -58,7 +58,7 @@ export function Chat(props: ChatProps) {
                   </Avatar>
                 )}
                 <p className="leading-relaxed">
-                  <span className="block font-bold text-slate-700">
+                  <span className="block font-bold text-slate-700 dark:text-slate-200">
                     {message.role === "user" ? "Usuário" : "AG"}
                   </span>
 
